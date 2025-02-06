@@ -102,7 +102,7 @@ app.get('/api/classify-number', async(req, res) => {
         }) 
     }
   
-    if (!num){
+    if (!num || typeof(num)!=="number"){
         res.status(400).json({
             "number": "alphabet",
             "error": true
