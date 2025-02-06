@@ -86,13 +86,22 @@ console.log(isoDatetime);
 })
 
 app.get('/api/classify-number', async(req, res) => {
-    if (typeof(req.query.number)!=="number"){
+    let num
+    if (!req.query.number){
         res.status(400).json({
             "number": "alphabet",
             "error": true
-        })
+        }) 
     }
-    const num = parseInt(req.query.number)
+    try {
+       num = parseInt(req.query.number)
+    } catch (error) {
+        res.status(400).json({
+            "number": "alphabet",
+            "error": true
+        }) 
+    }
+  
     if (!num){
         res.status(400).json({
             "number": "alphabet",
