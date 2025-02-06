@@ -87,6 +87,12 @@ console.log(isoDatetime);
 
 app.get('/api/classify-number', async(req, res) => {
     const num = parseInt(req.query.number)
+    if (!num){
+        res.status(400).json({
+            "number": "alphabet",
+            "error": true
+        })
+    }
     const prime = isPrime(num)
     const perfect = isPerfectNumber(num)
     const armstrong = isArmstrongNumber(num)
