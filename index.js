@@ -86,7 +86,7 @@ console.log(isoDatetime);
 })
 
 app.get('/api/classify-number', async(req, res) => {
-    if (!/^\d+$/.test(req.query.number)) {
+    if (!/^-?\d+$/.test(req.query.number)) {
         return res.status(400).json({
             "number": req.query.number,
             "error": true
