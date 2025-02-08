@@ -89,7 +89,7 @@ app.get('/api/classify-number', async(req, res) => {
     let num
     if (!req.query.number){
         return res.status(400).json({
-            "number": "alphabet",
+            "number": req.query.number,
             "error": true
         }) 
     }
@@ -97,14 +97,14 @@ app.get('/api/classify-number', async(req, res) => {
        num = parseInt(req.query.number)
     } catch (error) {
         return res.status(400).json({
-            "number": "alphabet",
+            "number": req.query.number,
             "error": true
         }) 
     }
   
     if (isNaN(num) || !num || typeof(num)!=="number"){
         return res.status(400).json({
-            "number": "alphabet",
+            "number": req.query.number,
             "error": true
         })
     }
